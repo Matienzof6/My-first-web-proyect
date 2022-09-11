@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block titleh1 %} LOGIN {% endblock %} 
+{% block content %}
+
+<form method="post" action="">
+
+    {% csrf_token %}
+
+    <div style="width: 30%; margin:auto; padding: 10px 20px;" class="card text-bg-primary mb-3">
+        {% if messages %}
+        
+            {% for message in messages %}
+                <span {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %} style="text-align: center;">{{message}}</span>
+            {% endfor %}
+        
+        {% endif %}
+    {{form|crispy}}
+
+    <button type="submit" class="btn btn-succes">Entrar</button>
+
+</div>
+</form>
+
+
+
+
+
+{% endblock %}
